@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import { Article } from "@/context/articles/types";
 import { Link } from "react-router-dom";
 import { H3 } from "@/components/ui/heading";
+import Button from "@/components/ui/button";
 
 function ArticleCard(props: { article: Article }) {
   return (
@@ -11,7 +11,7 @@ function ArticleCard(props: { article: Article }) {
         <H3>{props.article.title}</H3>
         <p className='mt-4'>{props.article.summary}</p>
         <Link to={`/articles/${props.article.id}`}>
-          <Button className='mt-4'>Read More</Button>
+          <Button>Read More</Button>
         </Link>
       </div>
     </div>
