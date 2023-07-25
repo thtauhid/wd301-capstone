@@ -10,9 +10,12 @@ function ArticleCard(props: { article: Article }) {
       <div className='p-4'>
         <H3>{props.article.title}</H3>
         <p className='mt-4'>{props.article.summary}</p>
-        <Link to={`/articles/${props.article.id}`}>
-          <Button>Read More</Button>
-        </Link>
+        <div className='flex items-end justify-between'>
+          <Link to={`/articles/${props.article.id}`}>
+            <Button>Read More</Button>
+          </Link>
+          <p>{props.article.sport.name}</p>
+        </div>
       </div>
     </div>
   );
