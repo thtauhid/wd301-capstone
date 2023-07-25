@@ -17,7 +17,7 @@ function MatchListItems() {
     <div className='flex gap-4 flex-wrap'>
       {matches.map((match) => {
         return (
-          <div key={match.id}>
+          <div key={match.id} className='m-2 p-2'>
             <Card className='w-96'>
               <CardHeader>
                 <CardTitle>

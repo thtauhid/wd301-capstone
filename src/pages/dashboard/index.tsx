@@ -1,13 +1,15 @@
+import { Separator } from "@/components/ui/separator";
 import Articles from "../articles";
 import Matches from "../matches";
 
 function Dashboard() {
   return (
-    <div>
-      <div className='m-4 p-4'>
+    <div className='m-4'>
+      <div className=''>
         <Matches />
       </div>
-      <div className='w-1/2'>
+      <Separator className='m-4' />
+      <div className='w-2/3'>
         <Articles />
       </div>
     </div>
