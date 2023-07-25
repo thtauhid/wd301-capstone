@@ -1,14 +1,5 @@
 import { useMatchesState } from "@/context/matches/context";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-// import { useEffect } from "react";
-// import { fetchSingleMatch } from "@/context/matches/actions";
+import { H3 } from "@/components/ui/heading";
 
 function MatchListItems() {
   const { matches } = useMatchesState();
@@ -17,29 +8,23 @@ function MatchListItems() {
     <div className='flex gap-4 flex-wrap'>
       {matches.map((match) => {
         return (
-          <div key={match.id} className='m-2 p-2'>
-            <Card className='w-96'>
-              <CardHeader>
-                <CardTitle>
-                  {match.teams[0].name} vs {match.teams[1].name}
-                </CardTitle>
-                <CardDescription>
-                  {match.location} |{" "}
-                  {new Date(match.endsAt).toLocaleDateString()}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  {match.teams[0].name} {match.score[match.teams[0].name]}
-                </p>
-                <p>
-                  {match.teams[1].name} {match.score[match.teams[1].name]}
-                </p>
-              </CardContent>
-              <CardFooter>
-                <p>{match.sportName} </p>
-              </CardFooter>
-            </Card>
+          <div key={match.id} className='m-4 p-4 border w-96'>
+            <H3>
+              {match.teams[0].name} vs {match.teams[1].name}
+            </H3>
+            <p className='font-mono'>{match.location}</p>
+            <div className='my-4 font-bold text-2xl'>
+              <p>
+                {match.teams[0].name} {match.score[match.teams[0].name]}
+              </p>
+              <p>
+                {match.teams[1].name} {match.score[match.teams[1].name]}
+              </p>
+            </div>
+            <p>
+              {match.sportName} | {new Date(match.endsAt).toLocaleDateString()}
+            </p>
+            <div></div>
           </div>
         );
       })}
