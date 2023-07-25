@@ -1,4 +1,3 @@
-import { Separator } from "@/components/ui/separator";
 import Articles from "../articles";
 import Matches from "../matches";
 
@@ -8,7 +7,7 @@ function Dashboard() {
       <div className=''>
         <Matches />
       </div>
-      <Separator className='m-4' />
+      <span className='block bg-stone-400 m-4 p-[1px]' />
       <div className='w-2/3'>
         <Articles />
       </div>
