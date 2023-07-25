@@ -11,7 +11,7 @@ function MatchList() {
   });
 
   return (
-    <div>
+    <div className='mt-4'>
       <MatchListItems />
     </div>
   );
