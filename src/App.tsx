@@ -1,15 +1,8 @@
-import Header from "./Header";
-import Articles from "./pages/articles";
-import Matches from "./pages/matches";
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
 
 function App() {
-  return (
-    <>
-      <Header />
-      <Articles />
-      <Matches />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
