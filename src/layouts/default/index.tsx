@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Appbar from "./Appbar";
+import Dashboard from "@/pages/dashboard";
 
 const DefaultLayout = () => {
   return (
@@ -7,6 +8,7 @@ const DefaultLayout = () => {
       <Appbar />
       <main>
         <div className=''>
+          <Dashboard />
           <Outlet />
         </div>
       </main>

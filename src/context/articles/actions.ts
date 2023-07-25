@@ -1,5 +1,5 @@
 import { API_ENDPOINT } from "@/config/constants";
-import { Article, ArticlesDispatch } from "./types";
+import { Article, ArticlesDispatch, DetailedArticle } from "./types";
 
 export const fetchArticles = async (dispatch: ArticlesDispatch) => {
   try {
@@ -22,5 +22,23 @@ export const fetchArticles = async (dispatch: ArticlesDispatch) => {
       type: "FETCH_ARTICLES_FAILURE",
       payload: "Unable to load articles",
     });
+  }
+};
+
+export const fetchSingleArticle = async (id: string) => {
+  try {
+    const response = await fetch(`${API_ENDPOINT}/articles/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data: DetailedArticle = await response.json();
+
+    console.log({ data });
+    return data;
+  } catch (error) {
+    console.log("Error fetching single article:", error);
   }
 };

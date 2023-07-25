@@ -3,11 +3,12 @@ import Matches from "../matches";
 
 function Dashboard() {
   return (
-    <div>
-      <div className='m-4 p-4'>
+    <div className='m-4'>
+      <div className=''>
         <Matches />
       </div>
-      <div className='w-1/2'>
+      <span className='block bg-stone-400 m-4 p-[1px]' />
+      <div className='w-2/3'>
         <Articles />
       </div>
     </div>

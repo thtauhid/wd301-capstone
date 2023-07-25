@@ -2,6 +2,7 @@ import { ArticlesActions, ArticlesState } from "./types";
 
 export const initialState: ArticlesState = {
   articles: [],
+  article: null,
   isLoading: false,
   isError: false,
   errorMessage: "",

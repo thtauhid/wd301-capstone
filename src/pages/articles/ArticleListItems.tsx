@@ -1,5 +1,5 @@
 import { useArticlesState } from "@/context/articles/context";
-import SingleArticle from "../../components/ui/SingleArticle";
+import ArticleCard from "./ArticleCard";
 
 function ArticleListItems() {
   const { articles } = useArticlesState();
@@ -8,7 +8,7 @@ function ArticleListItems() {
       {articles.map((article) => {
         return (
           <div key={article.id} className='m-2 p-2'>
-            <SingleArticle article={article} />
+            <ArticleCard article={article} />
           </div>
         );
       })}
