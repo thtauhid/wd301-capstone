@@ -1,11 +1,12 @@
 import { ArticlesProvider } from "@/context/articles/context";
 import ArticleList from "./ArticleList";
+import { H2 } from "@/components/ui/heading";
 
 function Articles() {
   return (
     <ArticlesProvider>
       <div>
-        <h1>Articles</h1>
+        <H2>Articles</H2>
         <ArticleList />
       </div>
     </ArticlesProvider>
