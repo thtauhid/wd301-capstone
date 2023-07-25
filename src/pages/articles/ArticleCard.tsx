@@ -7,8 +7,9 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Article } from "@/context/articles/types";
+import { Link } from "react-router-dom";
 
-function SingleArticle(props: { article: Article }) {
+function ArticleCard(props: { article: Article }) {
   return (
     <Card>
       <CardHeader>
@@ -18,7 +19,9 @@ function SingleArticle(props: { article: Article }) {
         <div className='flex justify-between'>
           <div>
             <p>{props.article.summary}</p>
-            <Button className='mt-4'>Read More</Button>
+            <Link to={`/articles/${props.article.id}`}>
+              <Button className='mt-4'>Read More</Button>
+            </Link>
           </div>
           <img src={props.article.thumbnail} alt='' className='h-32 w-32' />
         </div>
@@ -34,4 +37,4 @@ function SingleArticle(props: { article: Article }) {
   );
 }
 
-export default SingleArticle;
+export default ArticleCard;
