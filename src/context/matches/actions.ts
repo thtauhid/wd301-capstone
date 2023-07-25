@@ -55,3 +55,26 @@ export const fetchMatches = async (dispatch: MatchesDispatch) => {
     });
   }
 };
+
+export const refreshMatch = async (dispatch: MatchesDispatch, id: number) => {
+  try {
+    const response = await fetch(`${API_ENDPOINT}/matches/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    const matchDetails: MatchDetails = data;
+    console.log({ matchDetails });
+
+    dispatch({ type: "REFRESH_MATCH_SUCCESS", payload: matchDetails });
+  } catch (error) {
+    console.log("Error fetching matches:", error);
+    dispatch({
+      type: "REFRESH_MATCH_FAILURE",
+      payload: "Unable to load matches",
+    });
+  }
+};

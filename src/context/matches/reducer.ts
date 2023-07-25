@@ -33,6 +33,21 @@ export const matchesReducer = (
         errorMessage: action.payload,
       };
 
+    case "REFRESH_MATCH_SUCCESS":
+      return {
+        ...state,
+        matches: state.matches.map((match) =>
+          match.id === action.payload.id ? action.payload : match
+        ),
+      };
+
+    case "REFRESH_MATCH_FAILURE":
+      return {
+        ...state,
+        isError: true,
+        errorMessage: action.payload,
+      };
+
     default:
       return state;
   }
