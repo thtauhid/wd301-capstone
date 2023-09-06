@@ -1,14 +1,17 @@
 import { ArticlesProvider } from "@/context/articles/context";
 import ArticleList from "./ArticleList";
 import { H2 } from "@/components/ui/heading";
+import { SportsProvider } from "@/context/sports/context";
 
 function Articles() {
   return (
     <ArticlesProvider>
-      <div>
-        <H2>Articles</H2>
-        <ArticleList />
-      </div>
+      <SportsProvider>
+        <div>
+          <H2>Articles</H2>
+          <ArticleList />
+        </div>
+      </SportsProvider>
     </ArticlesProvider>
   );
 }

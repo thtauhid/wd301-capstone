@@ -5,6 +5,7 @@ export const initialState: SportsState = {
   isLoading: false,
   isError: false,
   errorMessage: "",
+  selectedSport: 0,
 };
 
 export const sportsReducer = (
@@ -31,6 +32,12 @@ export const sportsReducer = (
         isLoading: false,
         isError: true,
         errorMessage: action.payload,
+      };
+
+    case "SELECT_SPORT":
+      return {
+        ...state,
+        selectedSport: action.payload,
       };
 
     default:

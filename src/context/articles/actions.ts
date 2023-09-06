@@ -42,3 +42,7 @@ export const fetchSingleArticle = async (id: string) => {
     console.log("Error fetching single article:", error);
   }
 };
+
+export const filterArticles = (dispatch: ArticlesDispatch, id: number) => {
+  dispatch({ type: "FILTER_ARTICLES", payload: id });
+};

@@ -26,3 +26,7 @@ export const fetchSports = async (dispatch: SportsDispatch) => {
     });
   }
 };
+
+export const selectSport = (dispatch: SportsDispatch, sportId: number) => {
+  dispatch({ type: "SELECT_SPORT", payload: sportId });
+};

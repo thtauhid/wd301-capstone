@@ -4,18 +4,23 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
 import ArticleListItems from "./ArticleListItems";
+import { useSportsState } from "@/context/sports/context";
 
 function PaginatedArticles() {
   const itemsPerPage = 5; // TODO: Make this configurable by the user
-  const { articles } = useArticlesState();
+  const { articles, articlesToDisplay } = useArticlesState();
+  const { selectedSport } = useSportsState();
+
+  const data = selectedSport === 0 ? articles : articlesToDisplay;
+
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = articles.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(articles.length / itemsPerPage);
+  const currentItems = data.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(data.length / itemsPerPage);
 
   const handlePageClick = (event: { selected: number }) => {
-    const newOffset = (event.selected * itemsPerPage) % articles.length;
+    const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
 
     // Scroll to top

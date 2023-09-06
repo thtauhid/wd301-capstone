@@ -6,6 +6,7 @@ export const initialState: ArticlesState = {
   isLoading: false,
   isError: false,
   errorMessage: "",
+  articlesToDisplay: [],
 };
 
 export const articlesReducer = (
@@ -32,6 +33,14 @@ export const articlesReducer = (
         isLoading: false,
         isError: true,
         errorMessage: action.payload,
+      };
+
+    case "FILTER_ARTICLES":
+      return {
+        ...state,
+        articlesToDisplay: state.articles.filter(
+          (article) => article.sport.id === action.payload
+        ),
       };
 
     default:

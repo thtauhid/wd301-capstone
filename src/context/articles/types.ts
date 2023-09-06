@@ -20,12 +20,14 @@ export interface ArticlesState {
   isLoading: boolean;
   isError: boolean;
   errorMessage: string;
+  articlesToDisplay: Article[];
 }
 
 export type ArticlesActions =
   | { type: "FETCH_ARTICLES_REQUEST" }
   | { type: "FETCH_ARTICLES_SUCCESS"; payload: Article[] }
-  | { type: "FETCH_ARTICLES_FAILURE"; payload: string };
+  | { type: "FETCH_ARTICLES_FAILURE"; payload: string }
+  | { type: "FILTER_ARTICLES"; payload: number };
 // | { type: "FETCH_SINGLE_ARTICLE_REQUEST" }
 // | { type: "FETCH_SINGLE_ARTICLE_SUCCESS"; payload: Article }
 // | { type: "FETCH_SINGLE_ARTICLE_FAILURE"; payload: string };
