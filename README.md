@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# Sports News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features (implemented)
 
-Currently, two official plugins are available:
+### Browse Sports News
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Users should be able to view a list of sports news articles.
+- Each news article should display the title, summary, and thumbnail image.
+- Users should be able to click on a news article to read the full content.
 
-## Expanding the ESLint configuration
+### Filter News Articles
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Users should have the ability to filter news articles by sport.
+- The filtered news articles should dynamically update without a page reload.
 
-- Configure the top-level `parserOptions` property like this:
+### View Live Scores and Match Details
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Users should be able to see a list of ongoing matches and their respective scores.
+- Each match should display the teams playing, the current score, and other relevant match details.
+- Users should have the option to manually refresh the scores.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Features (to be implemented)
+
+### Personalize Dashboard
+
+- Users should be able to create an account and sign in to the dashboard.
+- Signed-in users should have the ability to customize their dashboard preferences.
+- Preferences may include selecting favourite sports or teams to receive tailored news and score updates.
