@@ -3,7 +3,7 @@ export const H1 = (props: { children: React.ReactNode }) => {
 };
 
 export const H2 = (props: { children: React.ReactNode }) => {
-  return <h2 className='font-black text-2xl'>{props.children}</h2>;
+  return <h2 className='font-black text-2xl mx-4'>{props.children}</h2>;
 };
 
 export const H3 = (props: { children: React.ReactNode }) => {
