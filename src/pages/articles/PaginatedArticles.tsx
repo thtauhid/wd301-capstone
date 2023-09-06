@@ -1,5 +1,4 @@
 import { useArticlesState } from "@/context/articles/context";
-// import ArticleCard from "./ArticleCard";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 import ReactPaginate from "react-paginate";
@@ -18,6 +17,9 @@ function PaginatedArticles() {
   const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % articles.length;
     setItemOffset(newOffset);
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
