@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { fetchArticles } from "@/context/articles/actions";
 import { useArticlesDispatch } from "@/context/articles/context";
-import ArticleListItems from "./ArticleListItems";
+import PaginatedArticles from "./PaginatedArticles";
 
 function ArticleList() {
   const articlesDispatch = useArticlesDispatch();
@@ -12,7 +12,7 @@ function ArticleList() {
 
   return (
     <div>
-      <ArticleListItems />
+      <PaginatedArticles />
     </div>
   );
 }

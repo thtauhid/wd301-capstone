@@ -1,11 +1,10 @@
-import { useArticlesState } from "@/context/articles/context";
 import ArticleCard from "./ArticleCard";
+import { Article } from "@/context/articles/types";
 
-function ArticleListItems() {
-  const { articles } = useArticlesState();
+function ArticleListItems(props: { currentItems: Article[] }) {
   return (
     <div>
-      {articles.map((article) => {
+      {props.currentItems.map((article) => {
         return (
           <div key={article.id} className='m-2 p-2'>
             <ArticleCard article={article} />
