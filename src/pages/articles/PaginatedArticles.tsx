@@ -27,6 +27,9 @@ function PaginatedArticles() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  if (data.length === 0)
+    return <div className='text-center text-2xl mt-4'>No articles found</div>;
+
   return (
     <>
       <ArticleListItems currentItems={currentItems} />
