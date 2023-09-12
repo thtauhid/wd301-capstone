@@ -1,5 +1,6 @@
 import ProfileDetails from "./ProfileDetails";
 import PasswordUpdate from "./PasswordUpdate";
+import UpdatePreferences from "./UpdatePreferences";
 import { H1, H2 } from "@/components/ui/heading";
 import { P } from "@/components/ui/paragraph";
 
@@ -8,7 +9,7 @@ function Profile() {
     <div>
       <H1>Profile</H1>
       <P>
-        You can view your profile details and update your preferances & password
+        You can view your profile details and update your preferences & password
         from here.
       </P>
 
@@ -19,8 +20,9 @@ function Profile() {
       </div>
 
       <div className='m-4 p-4 border border-stone-500 w-1/2'>
-        <H2>Preferances</H2>
-        <P>You can update your preferances from here.</P>
+        <H2>Preferences</H2>
+        <P>You can update your preferences from here.</P>
+        <UpdatePreferences />
       </div>
 
       <div className='m-4 p-4 border border-stone-500 w-1/2'>
