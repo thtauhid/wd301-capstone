@@ -2,6 +2,7 @@ import DefaultLayout from "@/layouts/default";
 import ArticleDetails from "@/pages/articles/ArticleDetails";
 import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/notfound";
+import SignIn from "@/pages/sign-in";
 import SignUp from "@/pages/sign-up";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "sign-up",
         element: <SignUp />,
+      },
+      {
+        path: "sign-in",
+        element: <SignIn />,
       },
       {
         path: "*",
