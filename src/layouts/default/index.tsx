@@ -6,7 +6,7 @@ const DefaultLayout = () => {
     <>
       <Appbar />
       <main>
-        <div className=''>
+        <div className='m-4'>
           <Outlet />
         </div>
       </main>

@@ -2,9 +2,11 @@ import DefaultLayout from "@/layouts/default";
 import ArticleDetails from "@/pages/articles/ArticleDetails";
 import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/notfound";
+import Profile from "@/pages/profile";
 import SignIn from "@/pages/sign-in";
 import SignUp from "@/pages/sign-up";
 import { Navigate, createBrowserRouter } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: "sign-in",
         element: <SignIn />,
+      },
+      {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "*",

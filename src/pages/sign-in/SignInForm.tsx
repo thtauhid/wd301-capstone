@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-type SignUpFormInputs = {
+type SignInFormInputs = {
   email: string;
   password: string;
 };
@@ -16,9 +16,9 @@ function SignInForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignUpFormInputs>();
+  } = useForm<SignInFormInputs>();
 
-  const onSubmit: SubmitHandler<SignUpFormInputs> = async (data) => {
+  const onSubmit: SubmitHandler<SignInFormInputs> = async (data) => {
     const { email, password } = data;
 
     const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {

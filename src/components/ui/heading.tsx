@@ -1,5 +1,5 @@
 export const H1 = (props: { children: React.ReactNode }) => {
-  return <h1>{props.children}</h1>;
+  return <h1 className='font-black text-3xl mx-4'>{props.children}</h1>;
 };
 
 export const H2 = (props: { children: React.ReactNode }) => {
