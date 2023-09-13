@@ -28,7 +28,7 @@ function TeamsPreferences(props: Props) {
               id={team.name}
               name={String(team.id)}
               checked={
-                props.preferences.favourite_teams.includes(team.id)
+                props.preferences?.favourite_teams.includes(team.id)
                   ? true
                   : false
               }

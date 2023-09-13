@@ -54,7 +54,7 @@ function Filter() {
   const { preferences, isLoading: preferenceIsLoading } = usePreferencesState();
 
   const prefferedSports = sportsList.filter((sport) =>
-    preferences.favourite_sports.includes(sport.id)
+    preferences?.favourite_sports.includes(sport.id)
   );
 
   const sports = user
@@ -62,7 +62,7 @@ function Filter() {
     : [{ id: 0, name: "Select Sport" }, ...sportsList];
 
   const prefferTeams = teamList.filter((team) =>
-    preferences.favourite_teams.includes(team.id)
+    preferences?.favourite_teams.includes(team.id)
   );
 
   const teams = user

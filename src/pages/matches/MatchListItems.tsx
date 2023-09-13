@@ -14,7 +14,7 @@ function MatchListItems() {
   // check if users preffered teams are playing matches and filter them
   const matches = user
     ? allMatches.filter((match) => {
-        return preferences.favourite_teams.filter((team) => {
+        return preferences?.favourite_teams.filter((team) => {
           return match.teams.find((t) => t.id === team);
         }).length;
       })

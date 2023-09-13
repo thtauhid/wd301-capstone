@@ -29,7 +29,7 @@ function SportsPreferences(props: Props) {
               id={sport.name}
               name={String(sport.id)}
               checked={
-                props.preferences.favourite_sports.includes(sport.id)
+                props.preferences?.favourite_sports.includes(sport.id)
                   ? true
                   : false
               }
