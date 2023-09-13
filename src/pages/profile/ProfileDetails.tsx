@@ -2,7 +2,12 @@ import { P } from "@/components/ui/paragraph";
 import { useUserState } from "@/context/auth/context";
 
 function ProfileDetails() {
-  const { user } = useUserState();
+  const { user, isLoading } = useUserState();
+
+  if (isLoading) {
+    return <p className='p-4'>Loading...</p>;
+  }
+
   return (
     <div className='my-4'>
       <P>ID: {user?.id}</P>

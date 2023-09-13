@@ -20,9 +20,9 @@ function UpdatePreferences() {
   const TeamsDispatch = useTeamsDispatch();
   const PreferencesDispatch = usePreferencesDispatch();
 
-  const { sports } = useSportsState();
-  const { teams } = useTeamsState();
-  const { preferences } = usePreferencesState();
+  const { sports, isLoading: sportsIsLoading } = useSportsState();
+  const { teams, isLoading: teamsIsLoading } = useTeamsState();
+  const { preferences, isLoading: preferenceIsLoading } = usePreferencesState();
 
   useEffect(() => {
     fetchSports(SportsDispatch);
@@ -53,6 +53,10 @@ function UpdatePreferences() {
 
     updatePreferencesAction(PreferencesDispatch, updatedPreferences);
   };
+
+  if (sportsIsLoading || teamsIsLoading || preferenceIsLoading) {
+    return <p className='py-4'>Loading...</p>;
+  }
 
   return (
     <div className='m-4'>
