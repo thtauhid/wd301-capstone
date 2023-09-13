@@ -1,7 +1,11 @@
 import { fetchUser } from "@/context/auth/actions";
 import { useUserDispatch, useUserState } from "@/context/auth/context";
 import { getAuthToken } from "@/utils/auth";
-import { Cog6ToothIcon, UserIcon } from "@heroicons/react/24/outline";
+import {
+  Cog6ToothIcon,
+  UserIcon,
+  UserPlusIcon,
+} from "@heroicons/react/24/outline";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -44,15 +48,26 @@ function Appbar() {
             </div>
           </Link>
         ) : (
-          <Link
-            to='/sign-in'
-            className='text-white hover:text-stone-400 transition duration-500 ease-in-out border px-4 py-2 rounded-md'
-          >
-            <div className='flex justify-center items-center gap-2'>
-              <UserIcon className='h-8 w-8' />
-              <p>Login</p>
-            </div>
-          </Link>
+          <>
+            <Link
+              to='/sign-in'
+              className='text-white hover:text-stone-400 transition duration-500 ease-in-out border px-4 py-2 rounded-md'
+            >
+              <div className='flex justify-center items-center gap-2'>
+                <UserIcon className='h-8 w-8' />
+                <p>Sign In</p>
+              </div>
+            </Link>
+            <Link
+              to='/sign-up'
+              className='text-white hover:text-stone-400 transition duration-500 ease-in-out border px-4 py-2 rounded-md'
+            >
+              <div className='flex justify-center items-center gap-2'>
+                <UserPlusIcon className='h-8 w-8' />
+                <p>Sign Up</p>
+              </div>
+            </Link>
+          </>
         )}
       </div>
     </div>
