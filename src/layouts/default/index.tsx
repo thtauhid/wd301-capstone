@@ -5,6 +5,7 @@ const DefaultLayout = () => {
   return (
     <>
       <Appbar />
+
       <main>
         <div className='m-4'>
           <Outlet />

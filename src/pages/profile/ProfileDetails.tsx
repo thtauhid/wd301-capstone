@@ -1,8 +1,8 @@
 import { P } from "@/components/ui/paragraph";
-import { getUserFromLocalStorage } from "@/utils/user";
+import { useUserState } from "@/context/auth/context";
 
 function ProfileDetails() {
-  const user = getUserFromLocalStorage();
+  const { user } = useUserState();
   return (
     <div className='my-4'>
       <P>ID: {user?.id}</P>

@@ -1,4 +1,6 @@
 import { API_ENDPOINT } from "@/config/constants";
+import { fetchUser } from "@/context/auth/actions";
+import { useUserDispatch } from "@/context/auth/context";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +12,7 @@ type SignInFormInputs = {
 
 function SignInForm() {
   const navigate = useNavigate();
+  const UserDispatch = useUserDispatch();
   const [error, setError] = useState("");
 
   const {
@@ -34,6 +37,8 @@ function SignInForm() {
       // After successful signup, first we will save the token in localStorage
       localStorage.setItem("authToken", data.auth_token);
       localStorage.setItem("userData", JSON.stringify(data.user));
+
+      await fetchUser(UserDispatch, data.auth_token);
 
       // Then we will redirect the user to the dashboard
       navigate("/");
