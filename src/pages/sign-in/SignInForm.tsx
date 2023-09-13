@@ -67,6 +67,7 @@ function SignInForm() {
         <input
           type='email'
           id='email'
+          autoFocus
           {...register("email", { required: true })}
           className={`w-full border rounded-md py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
             errors.email ? "border-red-500" : ""
