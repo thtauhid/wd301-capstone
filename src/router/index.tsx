@@ -8,6 +8,7 @@ import SignUp from "@/pages/sign-up";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import FloatingPreferenceMenu from "@/pages/preferences/FloatingPreferenceMenu";
+import SignOut from "@/pages/sign-out";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "sign-in",
         element: <SignIn />,
+      },
+      {
+        path: "sign-out",
+        element: <SignOut />,
       },
       {
         path: "profile",
