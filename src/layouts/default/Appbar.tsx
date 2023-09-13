@@ -17,7 +17,9 @@ function Appbar() {
 
   return (
     <div className='bg-black flex justify-between items-center'>
-      <p className='text-white font-bold text-2xl p-4'>Sports Center</p>
+      <Link to='/' className='text-white font-bold text-2xl mx-12'>
+        Sports Center
+      </Link>
       <div className='flex p-4 gap-4'>
         {user && (
           <Link
