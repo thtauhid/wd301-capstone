@@ -38,6 +38,7 @@ function SignUpForm() {
 
       // Then we will redirect the user to the dashboard
       navigate("/");
+      navigate(0);
     }
 
     setError("Sign up failed.");

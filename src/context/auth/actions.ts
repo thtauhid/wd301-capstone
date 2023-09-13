@@ -4,10 +4,7 @@ import { getAuthToken } from "@/utils/auth";
 
 const token = getAuthToken();
 
-export const fetchUser = async (
-  dispatch: UserDispatch,
-  auth_token?: string
-) => {
+export const fetchUser = async (dispatch: UserDispatch) => {
   try {
     dispatch({ type: "FETCH_USER_REQUEST" });
 
@@ -15,7 +12,7 @@ export const fetchUser = async (
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${auth_token ? auth_token : token}`,
+        authorization: `Bearer ${token}`,
       },
     });
 
@@ -26,6 +23,7 @@ export const fetchUser = async (
     dispatch({ type: "FETCH_USER_SUCCESS", payload: data });
   } catch (error) {
     console.log("Error fetching user:", error);
+
     dispatch({
       type: "FETCH_USER_FAILURE",
       payload: "Unable to load user",
