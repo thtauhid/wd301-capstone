@@ -7,6 +7,7 @@ import SignIn from "@/pages/sign-in";
 import SignUp from "@/pages/sign-up";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import FloatingPreferenceMenu from "@/pages/preferences/FloatingPreferenceMenu";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Profile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "preferences",
+        element: (
+          <ProtectedRoute>
+            <FloatingPreferenceMenu />
           </ProtectedRoute>
         ),
       },
