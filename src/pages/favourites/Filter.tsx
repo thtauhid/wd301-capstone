@@ -47,11 +47,11 @@ function filterArticleByTeamId(articles: Article[], teamId: number) {
 }
 
 function Filter() {
-  const { user } = useUserState();
-  const { sports: sportsList } = useSportsState();
-  const { teams: teamList } = useTeamsState();
-  const { articles } = useArticlesState();
-  const { preferences } = usePreferencesState();
+  const { user, isLoading: userIsLoading } = useUserState();
+  const { sports: sportsList, isLoading: sportsIsLoading } = useSportsState();
+  const { teams: teamList, isLoading: teamsIsLoading } = useTeamsState();
+  const { articles, isLoading: articlesIsLoading } = useArticlesState();
+  const { preferences, isLoading: preferenceIsLoading } = usePreferencesState();
 
   const prefferedSports = sportsList.filter((sport) =>
     preferences.favourite_sports.includes(sport.id)
@@ -101,6 +101,16 @@ function Filter() {
     const newlyFilteredArticles = filterArticleByTeamId(articles, team.id);
     setFilteredArticles(newlyFilteredArticles);
   };
+
+  if (
+    userIsLoading ||
+    sportsIsLoading ||
+    teamsIsLoading ||
+    articlesIsLoading ||
+    preferenceIsLoading
+  ) {
+    return <p className='p-4'>Loading...</p>;
+  }
 
   return (
     <>

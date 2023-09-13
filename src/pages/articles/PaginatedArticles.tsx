@@ -8,7 +8,11 @@ import { useSportsState } from "@/context/sports/context";
 
 function PaginatedArticles() {
   const itemsPerPage = 5; // TODO: Make this configurable by the user
-  const { articles, articlesToDisplay } = useArticlesState();
+  const {
+    articles,
+    articlesToDisplay,
+    isLoading: articlesIsLoading,
+  } = useArticlesState();
   const { selectedSport } = useSportsState();
 
   const data = selectedSport === 0 ? articles : articlesToDisplay;
@@ -26,6 +30,10 @@ function PaginatedArticles() {
     // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  if (articlesIsLoading) {
+    return <p className='p-4'>Loading...</p>;
+  }
 
   if (data.length === 0)
     return <div className='text-center text-2xl mt-4'>No articles found</div>;

@@ -12,7 +12,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function ArticleTypeFilter() {
-  const { sports: sportsList } = useSportsState();
+  const { sports: sportsList, isLoading: sportsIsLoading } = useSportsState();
   const articlesDispatch = useArticlesDispatch();
   const sportsDispatch = useSportsDispatch();
 
@@ -24,6 +24,10 @@ export default function ArticleTypeFilter() {
     filterArticles(articlesDispatch, sport.id);
     selectSport(sportsDispatch, sport.id);
   };
+
+  if (sportsIsLoading) {
+    return <p className='p-4'>Loading...</p>;
+  }
 
   return (
     <Listbox value={selected} onChange={handleSelect}>
