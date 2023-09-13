@@ -6,6 +6,10 @@ export interface Article {
     id: number;
     name: string;
   };
+  teams: {
+    id: number;
+    name: string;
+  }[];
   date: string;
   summary: string;
 }
