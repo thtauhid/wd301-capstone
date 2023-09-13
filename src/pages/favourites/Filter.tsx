@@ -7,6 +7,9 @@ import { useArticlesState } from "@/context/articles/context";
 import { useTeamsState } from "@/context/teams/context";
 import { Team } from "@/context/teams/types";
 import { Article } from "@/context/articles/types";
+import ArticleListItems from "../articles/ArticleListItems";
+import { useUserState } from "@/context/auth/context";
+import { usePreferencesState } from "@/context/preferences/context";
 
 type CustomArticle = {
   id: number;
@@ -44,20 +47,31 @@ function filterArticleByTeamId(articles: Article[], teamId: number) {
 }
 
 function Filter() {
+  const { user } = useUserState();
   const { sports: sportsList } = useSportsState();
   const { teams: teamList } = useTeamsState();
   const { articles } = useArticlesState();
-  // const { favourites } = useFavouritesState();
+  const { preferences } = usePreferencesState();
 
-  const sports = [{ id: 0, name: "Select Sport" }, ...sportsList];
+  const prefferedSports = sportsList.filter((sport) =>
+    preferences.favourite_sports.includes(sport.id)
+  );
+
+  const sports = user
+    ? [{ id: 0, name: "Select Sport" }, ...prefferedSports]
+    : [{ id: 0, name: "Select Sport" }, ...sportsList];
+
+  const prefferTeams = teamList.filter((team) =>
+    preferences.favourite_teams.includes(team.id)
+  );
+
+  const teams = user
+    ? [{ id: 0, name: "Select Team", plays: "Select Sport" }, ...prefferTeams]
+    : [{ id: 0, name: "Select Team", plays: "Select Sport" }, ...teamList];
+
   const [selectedSport, setSelectedSport] = useState(sports[0]);
-
-  const teams = [
-    { id: 0, name: "Select Team", plays: "Select Sport" },
-    ...teamList,
-  ];
-  const [filteredTeams, setFilteredTeams] = useState(teams);
   const [selectedTeam, setSelectedTeam] = useState(teams[0]);
+  const [filteredTeams, setFilteredTeams] = useState(teams);
   const [filteredArticles, setFilteredArticles] = useState<CustomArticle[]>([]);
 
   const handleSportSelect = (sport: Sport) => {
@@ -65,14 +79,21 @@ function Filter() {
     const newlyFilteredTeams = teams.filter(
       (team) => team.plays === sport.name
     );
-    setFilteredTeams(newlyFilteredTeams);
-    setSelectedTeam(newlyFilteredTeams[0]);
 
-    const newlyFilteredArticles = filterArticleByTeamId(
-      articles,
-      newlyFilteredTeams[0].id
-    );
-    setFilteredArticles(newlyFilteredArticles);
+    if (newlyFilteredTeams.length === 0) {
+      setFilteredTeams([{ id: 0, name: "Select Team", plays: "Select Sport" }]);
+      setSelectedTeam({ id: 0, name: "Select Team", plays: "Select Sport" });
+      setFilteredArticles([]);
+    } else {
+      setFilteredTeams(newlyFilteredTeams);
+      setSelectedTeam(newlyFilteredTeams[0]);
+
+      const newlyFilteredArticles = filterArticleByTeamId(
+        articles,
+        newlyFilteredTeams[0].id
+      );
+      setFilteredArticles(newlyFilteredArticles);
+    }
   };
 
   const handleTeamSelect = (team: Team) => {
@@ -233,11 +254,9 @@ function Filter() {
       </Listbox>
 
       {/* Articles */}
-      {filteredArticles.map((article) => (
-        <div key={article.id}>
-          <h2>{article.title}</h2>
-        </div>
-      ))}
+      <ArticleListItems
+        currentItems={filteredArticles as unknown as Article[]}
+      />
     </>
   );
 }

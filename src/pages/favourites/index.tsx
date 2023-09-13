@@ -3,19 +3,22 @@ import { SportsProvider } from "@/context/sports/context";
 import { TeamsProvider } from "@/context/teams/context";
 import L2 from "./l2";
 import { FavouritesProvider } from "@/context/favourites/context";
+import { PreferencesProvider } from "@/context/preferences/context";
 
 function Favourites() {
   return (
     <div>
-      <SportsProvider>
-        <TeamsProvider>
-          <ArticlesProvider>
-            <FavouritesProvider>
-              <L2 />
-            </FavouritesProvider>
-          </ArticlesProvider>
-        </TeamsProvider>
-      </SportsProvider>
+      <PreferencesProvider>
+        <SportsProvider>
+          <TeamsProvider>
+            <ArticlesProvider>
+              <FavouritesProvider>
+                <L2 />
+              </FavouritesProvider>
+            </ArticlesProvider>
+          </TeamsProvider>
+        </SportsProvider>
+      </PreferencesProvider>
     </div>
   );
 }

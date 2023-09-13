@@ -7,17 +7,21 @@ import { useTeamsDispatch } from "@/context/teams/context";
 import { H2 } from "@/components/ui/heading";
 import { useArticlesDispatch } from "@/context/articles/context";
 import { fetchArticles } from "@/context/articles/actions";
+import { fetchPreferences } from "@/context/preferences/actions";
+import { usePreferencesDispatch } from "@/context/preferences/context";
 
 function L2() {
   const SportsDispatch = useSportsDispatch();
   const TeamsDispatch = useTeamsDispatch();
   const ArticlesDiapatch = useArticlesDispatch();
+  const PreferenceDispatch = usePreferencesDispatch();
 
   useEffect(() => {
     fetchSports(SportsDispatch);
     fetchTeams(TeamsDispatch);
     fetchArticles(ArticlesDiapatch);
-  }, [ArticlesDiapatch, SportsDispatch, TeamsDispatch]);
+    fetchPreferences(PreferenceDispatch);
+  }, [ArticlesDiapatch, PreferenceDispatch, SportsDispatch, TeamsDispatch]);
 
   return (
     <div>
