@@ -1,6 +1,5 @@
 import ProfileDetails from "./ProfileDetails";
 import PasswordUpdate from "./PasswordUpdate";
-import Preferences from "../preferences";
 import { H1, H2 } from "@/components/ui/heading";
 import { P } from "@/components/ui/paragraph";
 import { Link } from "react-router-dom";
@@ -18,12 +17,6 @@ function Profile() {
         <H2>Profile Details</H2>
         <P>You can view your profile details from here.</P>
         <ProfileDetails />
-      </div>
-
-      <div className='m-4 p-4 border border-stone-500 w-1/2'>
-        <H2>Preferences</H2>
-        <P>You can update your preferences from here.</P>
-        <Preferences />
       </div>
 
       <div className='m-4 p-4 border border-stone-500 w-1/2'>
