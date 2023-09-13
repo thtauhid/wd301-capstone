@@ -13,6 +13,9 @@ export interface PreferencesState {
 export type PreferencesActions =
   | { type: "FETCH_PREFERENCES_REQUEST" }
   | { type: "FETCH_PREFERENCES_SUCCESS"; payload: Preferences }
-  | { type: "FETCH_PREFERENCES_FAILURE"; payload: string };
+  | { type: "FETCH_PREFERENCES_FAILURE"; payload: string }
+  | { type: "UPDATE_PREFERENCES_REQUEST" }
+  | { type: "UPDATE_PREFERENCES_SUCCESS"; payload: Preferences }
+  | { type: "UPDATE_PREFERENCES_FAILURE"; payload: string };
 
 export type PreferencesDispatch = React.Dispatch<PreferencesActions>;

@@ -36,6 +36,27 @@ export const preferencesReducer = (
         errorMessage: action.payload,
       };
 
+    case "UPDATE_PREFERENCES_REQUEST":
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case "UPDATE_PREFERENCES_SUCCESS":
+      return {
+        ...state,
+        isLoading: false,
+        preferences: action.payload,
+      };
+
+    case "UPDATE_PREFERENCES_FAILURE":
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        errorMessage: action.payload,
+      };
+
     default:
       return state;
   }
