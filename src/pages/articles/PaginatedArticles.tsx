@@ -5,17 +5,37 @@ import ReactPaginate from "react-paginate";
 import { useState } from "react";
 import ArticleListItems from "./ArticleListItems";
 import { useSportsState } from "@/context/sports/context";
+import { useUserState } from "@/context/auth/context";
+import { usePreferencesState } from "@/context/preferences/context";
 
 function PaginatedArticles() {
   const itemsPerPage = 5; // TODO: Make this configurable by the user
+  const { user, isLoading: userIsLoading } = useUserState();
+  const { preferences, isLoading: preferencesIsLoading } =
+    usePreferencesState();
+  const { selectedSport, isLoading: sportsIsLoading } = useSportsState();
+
   const {
     articles,
     articlesToDisplay,
     isLoading: articlesIsLoading,
   } = useArticlesState();
-  const { selectedSport } = useSportsState();
 
-  const data = selectedSport === 0 ? articles : articlesToDisplay;
+  // only articles from the user's favourite sports are displayed
+  const articlesFromPrefferedSports = articles.filter((article) =>
+    preferences?.favourite_sports.includes(article.sport.id)
+  );
+
+  let data;
+
+  if (user) {
+    data =
+      selectedSport === 0 ? articlesFromPrefferedSports : articlesToDisplay;
+  } else {
+    data = selectedSport === 0 ? articles : articlesToDisplay;
+  }
+
+  // const data = selectedSport === 0 ? articles : articlesToDisplay;
 
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -31,7 +51,12 @@ function PaginatedArticles() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (articlesIsLoading) {
+  if (
+    articlesIsLoading ||
+    sportsIsLoading ||
+    userIsLoading ||
+    preferencesIsLoading
+  ) {
     return <p className='p-4'>Loading...</p>;
   }
 

@@ -6,17 +6,29 @@ import { Sport } from "@/context/sports/types";
 import { filterArticles } from "@/context/articles/actions";
 import { useArticlesDispatch } from "@/context/articles/context";
 import { selectSport } from "@/context/sports/actions";
+import { usePreferencesState } from "@/context/preferences/context";
+import { useUserState } from "@/context/auth/context";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ArticleTypeFilter() {
+  const { user, isLoading: isUserLoading } = useUserState();
   const { sports: sportsList, isLoading: sportsIsLoading } = useSportsState();
+  const { preferences, isLoading: isPreferenceLoading } = usePreferencesState();
+
   const articlesDispatch = useArticlesDispatch();
   const sportsDispatch = useSportsDispatch();
 
-  const sports = [{ id: 0, name: "All" }, ...sportsList];
+  const prefferedSports = sportsList.filter((sport) =>
+    preferences?.favourite_sports.includes(sport.id)
+  );
+
+  const sports = user
+    ? [{ id: 0, name: "All" }, ...prefferedSports]
+    : [{ id: 0, name: "All" }, ...sportsList];
+
   const [selected, setSelected] = useState(sports[0]);
 
   const handleSelect = (sport: Sport) => {
@@ -25,7 +37,7 @@ export default function ArticleTypeFilter() {
     selectSport(sportsDispatch, sport.id);
   };
 
-  if (sportsIsLoading) {
+  if (isUserLoading || sportsIsLoading || isPreferenceLoading) {
     return <p className='p-4'>Loading...</p>;
   }
 
