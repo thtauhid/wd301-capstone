@@ -8,7 +8,7 @@ function Articles() {
     <ArticlesProvider>
       <SportsProvider>
         <div>
-          <H2>Articles</H2>
+          <H2>Trending News</H2>
           <ArticleList />
         </div>
       </SportsProvider>
